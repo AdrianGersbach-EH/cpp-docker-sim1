@@ -27,11 +27,17 @@ RUN cd /home && wget https://dl.bintray.com/boostorg/release/1.67.0/source/boost
 
 #ENV POCO_VERSION=1.9.0
 
+RUN apt-get update \
+  && apt-get install -y iodbc \
+                        libssl-dev \
+                        libiodbc2 \
+                        libmysqld-dev
+
 RUN cd /home && wget http://pocoproject.org/releases/poco-1.9.0/poco-1.9.0-all.tar.gz \
   && tar xfz poco-1.9.0-all.tar.gz \
   && rm poco-1.9.0-all.tar.gz \
   && cd poco-1.9.0-all \
-  && ./configure --prefix=/usr/local --omit=Data/ODBC,Data/MySQL --no-samples --no-tests --typical \
+  && ./configure --prefix=/usr/local --omit=Data/ODBC,Data/MySQL,Zip,XML --no-samples --no-tests --typical \
   && make -j8 \
   && make install \
   && cd /home \
