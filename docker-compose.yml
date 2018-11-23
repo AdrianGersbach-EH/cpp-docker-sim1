@@ -1,15 +1,29 @@
 version: '3'
+
 services:
-  web:
+  sfg500-sim01:
     build: .
+    container_name: sfg500-sim01
+    hostname: sfg500-sim01
+    restart: unless-stopped
     ports:
-    - "5000:5000"
-    volumes:
-    - .:/code
-    - logvolume01:/var/log
-    links:
-    - redis
-  redis:
-    image: redis
-volumes:
-  logvolume01: {}
+    - "2222:9977"
+    networks:
+      default:
+        ipv4_address: 192.168.21.221
+
+  sfg500-sim02:
+    build: .
+    container_name: sfg500-sim02
+    hostname: sfg500-sim02
+    restart: unless-stopped
+    ports:
+    - "2222:9977"
+    networks:
+      default:
+        ipv4_address: 192.168.21.222
+        
+networks:
+  default:
+    external:
+      name: macvlan1        
