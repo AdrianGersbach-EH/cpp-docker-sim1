@@ -25,6 +25,10 @@ $ sudo docker run -it <image> /bin/bash
 $ sudo docker run -d -p 8081:8080 --restart unless-stopped --name sfg500-sim1 <image>
 ```
 
+```
+$sudo docker ps -a -q --filter="name=<containerName>"
+```
+
 Remove all stopped containers
 ```
 $ sudo docker rm $(docker ps -a -q)
