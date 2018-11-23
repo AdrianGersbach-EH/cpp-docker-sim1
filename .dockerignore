@@ -1,1 +1,9 @@
+.git
+.gitignore
 
+LICENSE.md
+README.md
+
+*.cpp
+*.hpp
+*.o
