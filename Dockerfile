@@ -20,7 +20,7 @@ RUN cd /home && wget https://dl.bintray.com/boostorg/release/1.67.0/source/boost
   && tar xfz boost_1_67_0.tar.gz \
   && rm boost_1_67_0.tar.gz \
   && cd boost_1_67_0 \
-  && ./bootstrap.sh --prefix=/usr/local --with-libraries=program_options \
+  && ./bootstrap.sh --prefix=/usr/local --with-libraries=chrono,date_time,filesystem,program_options,random,regex,serialization,signals,system,thread \
   && ./b2 install \
   && cd /home \
   && rm -rf boost_1_67_0
@@ -43,7 +43,11 @@ RUN cd /home && wget http://pocoproject.org/releases/poco-1.9.0/poco-1.9.0-all.t
   && cd /home \
   && rm -rf poco-1.9.0-all
 
-#EXPOSE 8080
+# Copy EchoServer
+COPY app/ /home/app/
 
-#CMD["", ""]
+# Expose the port
+EXPOSE 9977
+
+CMD["/home/app/bin/Linux/x86_64/EchoServer"]
 
