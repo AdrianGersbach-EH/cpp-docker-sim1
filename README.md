@@ -48,3 +48,15 @@ docker rmi $(docker images -q)
 ```
 $ sudo docker network create -d macvlan --subnet=192.168.0.0/24 --gateway=192.168.0.1 -o parent=eth0 macvlan1
 ```
+
+# Docker Compose
+
+Build and Start
+```
+$ sudo docker-compose up -d
+```
+
+Stop and Remove
+```
+$ sudo docker-compose down --rmi all
+```
