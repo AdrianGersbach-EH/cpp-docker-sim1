@@ -37,7 +37,7 @@ RUN cd /home && wget http://pocoproject.org/releases/poco-1.9.0/poco-1.9.0-all.t
   && tar xfz poco-1.9.0-all.tar.gz \
   && rm poco-1.9.0-all.tar.gz \
   && cd poco-1.9.0-all \
-  && ./configure --prefix=/usr/local --omit=Data/ODBC,Data/MySQL,Zip,XML --no-samples --no-tests --typical \
+  && ./configure --prefix=/usr/local --omit=Data/ODBC,Data/MySQL,Zip,XML --no-samples --no-tests --typical --shared \
   && make -j8 \
   && make install \
   && cd /home \
@@ -49,5 +49,5 @@ COPY app/ /home/app/
 # Expose the port
 EXPOSE 9977
 
-CMD["/home/app/bin/Linux/x86_64/EchoServer"]
+CMD ["/home/app/bin/Linux/x86_64/EchoServer"]
 

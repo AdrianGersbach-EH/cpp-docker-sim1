@@ -9,8 +9,8 @@ services:
     ports:
     - "2222:9977"
     networks:
-      default:
-        ipv4_address: 192.168.21.221
+      default-external-network:
+       ipv4_address: 192.168.21.221
 
   sfg500-sim02:
     build: .
@@ -20,10 +20,11 @@ services:
     ports:
     - "2222:9977"
     networks:
-      default:
+      default-external-network:
         ipv4_address: 192.168.21.222
         
 networks:
-  default:
+  default-external-network:
     external:
-      name: macvlan1        
+      name: macvlan1
+        
