@@ -13,16 +13,17 @@ RUN apt-get update \
 # Download boost, untar, setup install with bootstrap and only do the Program Options library,
 # and then install
 
-ARG BOOST_VERSION=1.67.0
-ARG BOOST_VERSION_=1_67_0
+ARG BOOST_VERSION=1.68.0
+ARG BOOST_VERSION_=1_68_0
 
 RUN cd /home && wget https://dl.bintray.com/boostorg/release/${BOOST_VERSION}/source/boost_${BOOST_VERSION_}.tar.gz \
   && tar xfz boost_${BOOST_VERSION_}.tar.gz \
   && rm boost_${BOOST_VERSION_}.tar.gz \
   && cd boost_${BOOST_VERSION_} \
   && ./bootstrap.sh --prefix=/usr/local --with-libraries=chrono,date_time,filesystem,program_options,random,regex,serialization,signals,system,thread \
-  && ./b2 install \
+  && ./b2 -j8 install \
   && cd /home \
+  && ldconfig \
   && rm -rf boost_${BOOST_VERSION_}
 
 ENV PATH="${PATH}:/usr/local/lib"
