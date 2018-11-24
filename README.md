@@ -50,12 +50,27 @@ $ sudo docker network create -d macvlan --subnet=192.168.0.0/24 --gateway=192.16
 ```
 
 # Docker Compose
+Installing Docker Compose
 
+https://github.com/docker/compose/releases
+
+```
+$ sudo curl -L https://github.com/docker/compose/releases/download/1.23.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+$ sudo chmod +x /usr/local/bin/docker-compose
+$ sudo docker-compose --version
+```
+Build
+```
+$ sudo docker-compose build
+```
 Build and Start
 ```
 $ sudo docker-compose up -d
 ```
-
+Stop
+```
+$ sudo docker-compose down
+```
 Stop and Remove
 ```
 $ sudo docker-compose down --rmi all
