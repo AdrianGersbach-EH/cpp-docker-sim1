@@ -26,12 +26,22 @@ $ sudo docker run -d -p 8081:8080 --restart unless-stopped --name sfg500-sim1 <i
 ```
 
 ```
-$sudo docker ps -a -q --filter="name=<containerName>"
+$ sudo docker ps -a -q --filter="name=<containerName>"
 ```
 
 Remove all stopped containers
 ```
-$ sudo docker rm $(docker ps -a -q)
+$ sudo docker rm $(sudo docker ps -a -q)
+```
+
+```
+#!/bin/bash
+
+# Delete all containers
+docker rm $(docker ps -a -q)
+
+# Delete all images
+docker rmi $(docker images -q)
 ```
 
 # LAN eth0
