@@ -89,3 +89,8 @@ Stop and Remove
 ```
 sudo docker-compose down --rmi all
 ```
+
+# Links
+
+docker-libpoco-Dockerfile at master · JLospinoso-docker-libpoco
+https://github.com/JLospinoso/docker-libpoco/blob/master/Dockerfile
