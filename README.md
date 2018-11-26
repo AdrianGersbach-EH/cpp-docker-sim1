@@ -71,7 +71,18 @@ sudo curl -L https://github.com/docker/compose/releases/download/1.23.1/docker-c
 sudo chmod +x /usr/local/bin/docker-compose
 sudo docker-compose --version
 ```
+
 https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-16-04
+
+```
+# Install required packages
+apt update
+apt install -y python python-pip
+
+# Install Docker Compose from pip
+pip install docker-compose
+```
+https://withblue.ink/2017/12/31/yes-you-can-run-docker-on-raspbian.html
 
 Build
 ```
