@@ -22,6 +22,9 @@ services:
 
   sfg250-sim01:
     build: ./sfg250
+    depends_on:
+      - nginx-ext-test
+      - nginx-int-test
     container_name: sfg250-sim01
     hostname: sfg250-sim01
     restart: unless-stopped
@@ -33,6 +36,8 @@ services:
 
   sfg500-sim01:
     build: ./sfg500
+    depends_on:
+      - sfg250-sim01
     container_name: sfg500-sim01
     hostname: sfg500-sim01
     restart: unless-stopped
