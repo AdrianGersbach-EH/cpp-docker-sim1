@@ -45,7 +45,7 @@ COPY app/ /home/app/
 
 # Expose the port
 EXPOSE 80
-EXPOSE 6010
+EXPOSE 60010
 EXPOSE 9977
 
 CMD ["/home/app/bin/Linux/x86_64/EchoServer"]
