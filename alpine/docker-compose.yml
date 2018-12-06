@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  nginx-ext-test:
+    image: nginx
+    container_name: nginx-ext-test
+    networks:
+      default-external-network:
+       ipv4_address: 192.168.21.220
+    volumes:
+      - /var/log/nginx/nginx-ext-test:/var/log/nginx
+      - /usr/share/nginx/html/nginx-ext-test:/usr/share/nginx/html:ro
+
+  nginx-int-test:
+    image: nginx
+    container_name: nginx-int-test
+    ports:
+    - "8080:80"
+    volumes:
+      - /var/log/nginx/nginx-int-test:/var/log/nginx
+      - /usr/share/nginx/html/nginx-int-test:/usr/share/nginx/html:ro
+
+  sfg250-sim01:
+    build: ./sfg250
+    container_name: sfg250-sim01
+    hostname: sfg250-sim01
+    restart: unless-stopped
+    networks:
+      default-external-network:
+       ipv4_address: 192.168.21.221
+#    volumes:
+#      - /usr/share/sfg500-sim/sim01:/home/app
+
+  sfg500-sim01:
+    build: ./sfg500
+    container_name: sfg500-sim01
+    hostname: sfg500-sim01
+    restart: unless-stopped
+    networks:
+      default-external-network:
+        ipv4_address: 192.168.21.222
+#    volumes:
+#      - /usr/share/sfg500-sim/sim02:/home/app
+
+networks:
+  default-external-network:
+    external:
+      name: macvlan1
