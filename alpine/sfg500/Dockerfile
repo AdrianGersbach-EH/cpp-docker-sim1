@@ -8,8 +8,8 @@ ENV PATH="${PATH}:${LIBPATH}/lib"
 # Download boost, untar, setup install with bootstrap and only do the Program Options library,
 # and then install
 
-ARG BOOST_VERSION=1.68.0
-ARG BOOST_VERSION_=1_68_0
+ARG BOOST_VERSION=1.67.0
+ARG BOOST_VERSION_=1_67_0
 
 RUN apk add --update --no-cache --virtual .build-deps g++ make wget \
   && cd /home && wget https://dl.bintray.com/boostorg/release/${BOOST_VERSION}/source/boost_${BOOST_VERSION_}.tar.gz \
