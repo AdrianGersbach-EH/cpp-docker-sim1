@@ -3,6 +3,7 @@ FROM alpine:3.8
 MAINTAINER "Adrian Gersbach"
 
 ARG LIBPATH=/usr/local
+ENV PATH="${PATH}:${LIBPATH}/lib"
 
 # Download boost, untar, setup install with bootstrap and only do the Program Options library,
 # and then install
@@ -21,8 +22,6 @@ RUN apk add --update --no-cache --virtual .build-deps g++ make wget \
   && cd /home \
   && rm -rf boost_${BOOST_VERSION_} \
   && apk del .build-deps
-
-ENV PATH="${PATH}:${LIBPATH}/lib"
 
 ARG POCO_VERSION=1.9.0
 
