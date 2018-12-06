@@ -16,7 +16,7 @@ RUN apk add --update --no-cache --virtual .build-deps g++ make wget \
   && tar xfz boost_${BOOST_VERSION_}.tar.gz \
   && rm boost_${BOOST_VERSION_}.tar.gz \
   && cd boost_${BOOST_VERSION_} \
-  && ./bootstrap.sh --prefix=${LIBPATH} --with-libraries=chrono,date_time,filesystem,program_options,random,regex,serialization,signals,system,thread \
+  && ./bootstrap.sh --prefix=${LIBPATH} --with-libraries=atomic,chrono,date_time,filesystem,program_options,random,regex,serialization,signals,system,thread \
   && ./b2 -j8 install \
   && ldconfig ${LIBPATH}/lib \
   && cd /home \
@@ -44,6 +44,8 @@ RUN apk add --update --no-cache --virtual .build-deps cmake git g++ make wget li
 COPY app/ /home/app/
 
 # Expose the port
+EXPOSE 80
+EXPOSE 6010
 EXPOSE 9977
 
 CMD ["/home/app/bin/Linux/x86_64/EchoServer"]
