@@ -40,9 +40,13 @@ docker rm $(docker ps -a -q)
 docker rmi $(docker images -q)
 ```
 
-# LAN eth0
+## LAN eth0
 ```
-sudo docker network create -d macvlan --subnet=192.168.0.0/24 --gateway=192.168.0.1 -o parent=eth0 macvlan1
+docker network create -d macvlan --subnet=192.168.100.0/24 --gateway=192.168.100.1 -o parent=eth0 macvlan1
+```
+## LAN eth0.50
+```
+docker network create -d macvlan --subnet=192.168.50.0/24 --gateway=192.168.50.1 -o parent=eth0.50 macvlan50
 ```
 
 # Creating Proxy Configuration
